@@ -16,6 +16,11 @@ get '/groups/new' do
   end
 end
 
+get '/groups/:id' do |id|
+  group = Group.find(id)
+  erb :'groups/single', locals: {group: group}
+end
+
 
 post '/groups/new' do
   user = current_user
