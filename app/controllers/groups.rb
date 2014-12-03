@@ -42,5 +42,6 @@ end
 
 get '/groups/:cohort_name/:cohort_id' do
   @groups = current_user.groups.where(cohort_id: params[:cohort_id])
-  erb :'groups/group_by_cohort'
+  erb :'groups/group_by_cohort', locals: {cohort_name: params[:cohort_name], cohort_id: params[:cohort_id]}
 end
+
