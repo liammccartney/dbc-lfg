@@ -23,6 +23,9 @@ require 'erb'
 require 'dbc-ruby'
 
 require 'dotenv'
+Dotenv.load
+
+DBC.token = ENV['DBC_API']
 
 
 
