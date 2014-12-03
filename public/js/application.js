@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
   $("#new-groups-link").click(function(){
     event.preventDefault();
 
@@ -9,11 +10,12 @@ $(document).ready(function(){
       method: 'GET',
       data: $target.serialize()
     }).done(function(response){
+      $target.removeAttr('href');
       $target.parent().append(response)
     });
   })
 
-  $(".group-by-cohort").click(function(event){
+  $("#past-groups-link").click(function(){
     event.preventDefault();
 
     $target = $(event.target);
@@ -23,6 +25,22 @@ $(document).ready(function(){
       method: 'GET',
       data: $target.serialize()
     }).done(function(response){
+      $target.removeAttr('href');
+      $target.parent().append(response)
+    });
+  })
+
+  $("ul").on("click", ".group-by-cohort", function(event){
+    event.preventDefault();
+
+    $target = $(event.target);
+
+    $.ajax({
+      url: $target.attr('href'),
+      method: 'GET',
+      data: $target.serialize()
+    }).done(function(response){
+      $target.removeAttr('href');
       $target.parent().append(response)
     });
   });
@@ -37,6 +55,7 @@ $(document).ready(function(){
       method: 'GET',
       data: $target.serialize()
     }).done(function(response){
+      $target.removeAttr('href');
       $target.parent().append(response)
     });
   })
