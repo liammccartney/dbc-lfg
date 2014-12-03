@@ -1,8 +1,8 @@
-<h1>Groups for <%= cohort_name %> by Week</h1>
+<h3>Groups for <%= cohort_name %> by Week</h3>
 <ul>
   <% select_unique_group_creation_dates(cohort_name).each do |date| %>
-    <h2>
+    <li>
       <a class="group-by-date" href="/groups/<%= cohort_name %>/<%= cohort_id %>/<%= date %>">Groups Made the Week of <%= get_beginning_of_week(date) %></a>
-    </h2>
+    </li>
   <% end %>
 </ul>
