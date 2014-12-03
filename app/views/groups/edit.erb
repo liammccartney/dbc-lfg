@@ -1,0 +1,9 @@
+<form action="/groups/delete" method="POST">
+  <input type="hidden" name="_method" value="delete">
+  <input type="hidden" name="group_id" value="<%= group.id %>">
+  <input type="submit" value="Delete This Note!">
+</form>
+
+<% group.students.each do |student| %>
+  <li><%= student.name %></li>
+<% end %>
