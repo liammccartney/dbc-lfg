@@ -1,3 +1,17 @@
+get '/login' do
+  erb :'auth/login'
+end
+
+post '/login' do
+  #something
+end
+
+get '/logout' do
+  session[:user_id] = nil
+
+  redirect('/')
+end
+
 get '/signup' do
   erb :'auth/signup'
 end
