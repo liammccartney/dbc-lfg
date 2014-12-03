@@ -37,7 +37,7 @@ post '/groups/new' do
     end
   end
 
-  redirect ('/groups')
+  redirect ("/groups/#{cohort.name}/#{cohort.id}/#{Date.today}")
 end
 
 get '/groups/:cohort_name/:cohort_id' do
