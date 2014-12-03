@@ -1,7 +1,7 @@
 <ul>
   <% i = 1 %>
   <% @groups_by_date.each do |group| %>
-    <h2>Group <%= i %> </h2>
+    <li><a href="/groups/<%= group.id %>">Group <%= i %></a> - <a href="/groups/<%= group.id %>/edit">Edit</a></li>
     <ol>
      <%= erb :'groups/single', locals: {group: group} %>
     </ol>
