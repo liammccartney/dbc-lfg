@@ -1,8 +1,12 @@
 <ul>
+  <% i = 1 %>
   <% @groups_by_date.each do |group| %>
-    <h2>Group</h2>
+    <h2>Group <%= i %> </h2>
+    <ol>
     <% group.students.each do |student| %>
-      <p><%= student.name %></p>
+      <li><%= student.name %></li>
     <% end %>
+  </ol>
+    <% i += 1 %>
   <% end %>
 </ul>

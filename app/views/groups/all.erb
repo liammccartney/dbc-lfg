@@ -2,8 +2,10 @@
   <h1>You have not made any groups yet</h1>
 <% else %>
 
-<h1>Groups by Cohort</h1>
+<h1>Groups You have Made by Cohort</h1>
+<ul>
   <% select_unique_group_corhorts.each do |cohort| %>
-    <br><a href="/groups/<%= cohort.name %>/<%= cohort.id %>">Groups for <%= cohort.name %></a>
+    <h2><a href="/groups/<%= cohort.name %>/<%= cohort.id %>">Groups for <%= cohort.name %></a></h2>
   <% end %>
+</ul>
 <% end %>
