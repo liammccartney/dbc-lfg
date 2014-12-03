@@ -9,6 +9,13 @@
   <body>
     <div id="wrapper">
 
+      <div class="navbar">
+        <% if current_user %>
+          <a href="/logout">Logout</a>
+        <% else %>
+          <a href="/login">Login</a>
+      </div>
+
       <div class="content">
         <%= yield %>
       </div>
