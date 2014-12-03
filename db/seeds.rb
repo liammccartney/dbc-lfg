@@ -1,5 +1,5 @@
-cohorts = DBC::Cohorts.all
+cohorts = DBC::Cohort.all
 
 cohorts.each do |cohort|
-  Cohort.create(name: cohort.name, year)
+  Cohort.create(name: cohort.name)
 end
