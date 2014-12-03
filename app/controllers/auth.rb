@@ -3,7 +3,15 @@ get '/login' do
 end
 
 post '/login' do
-  #something
+  user = User.find_by(email: params[:user][:email]).try(:authenticate, params[:user][:password])
+
+  if user
+    session[:user_id] = user.id
+    redirect('/')
+  else
+    session[:errors] = set_error("Something didn't match up, try again")
+    redirect('/login')
+  end
 end
 
 get '/logout' do
