@@ -1,6 +1,10 @@
 get '/groups' do
   # display all groups made by user
-  erb :'groups/all'
+  if request.xhr?
+    erb :'groups/all', layout: false
+  else
+    erb :'groups/all'
+  end
 end
 
 get '/groups/new' do
@@ -16,10 +20,14 @@ end
 post '/groups/new' do
   user = current_user
   cohort_name = "#{params[:cohort][:name]} #{params[:cohort][:year]}"
-  cohort = Cohort.find_by(name: cohort_name)
 
-  params[:group][:groups_amount] ||= 4
-  params[:group][:group_size] ||= 4
+  cohort = Cohort.find_by(name: cohort_name)
+  target_group_amount = params[:group][:groups_amount]
+  target_group_size = params[:group][:group_size]
+
+
+  target_group_amount = 4 if target_group_amount.empty?
+  target_group_size = 4 if target_group_size.empty?
 
 
   students = DBC::Cohort.find(cohort.socrates_id).students
@@ -30,7 +38,7 @@ post '/groups/new' do
 
   student_names = students.map { |student| student.name }
 
-  grouper = Grouping.new(students: student_names, group_size: params[:group][:group_size].to_i, groups_amount: params[:group][:groups_amount].to_i)
+  grouper = Grouping.new(students: student_names, group_size: target_group_size, groups_amount: target_group_amount)
 
 
 
@@ -52,4 +60,3 @@ get '/groups/:cohort_name/:cohort_id' do
     erb :'groups/group_by_cohort', locals: {cohort_name: params[:cohort_name], cohort_id: params[:cohort_id]}
   end
 end
-
