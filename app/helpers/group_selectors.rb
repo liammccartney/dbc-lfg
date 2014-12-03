@@ -8,3 +8,7 @@ def select_unique_group_creation_dates(cohort_name)
   groups = current_user.groups.where(cohort_id: cohort.id)
   groups.map { |group| group.created_at.to_date }.uniq
 end
+
+def select_groups_by_date(groups, date_string)
+  groups.select { |group| group.created_at.to_date == date_string.to_date }
+end
