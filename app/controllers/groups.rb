@@ -1,6 +1,5 @@
 get '/groups' do
   # display all groups made by user
-  @user = User.find(current_user.id)
   erb :'groups/all'
 end
 
@@ -11,7 +10,7 @@ end
 
 
 post '/groups/new' do
-  user = User.find(current_user.id)
+  user = current_user
   cohort_name = "#{params[:cohort][:name]} #{params[:cohort][:year]}"
   cohort = Cohort.find_by(name: cohort_name)
 
@@ -42,7 +41,6 @@ post '/groups/new' do
 end
 
 get '/groups/:cohort_name/:cohort_id' do
-  @user = User.find(current_user.id)
-  @groups = @user.groups.where(cohort_id: params[:cohort_id])
+  @groups = current_user.groups.where(cohort_id: params[:cohort_id])
   erb :'groups/group_by_cohort'
 end

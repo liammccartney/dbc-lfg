@@ -1,10 +1,9 @@
-<% if @user.groups.empty? %>
+<% if current_user.groups.empty? %>
   <h1>You have not made any groups yet</h1>
 <% else %>
 
 <h1>Here are your groups:</h1>
-  <% @user.groups.each do |group| %>
-    <% cohort = Cohort.find(group.cohort_id).name %>
-    <br><a href="/groups/<%= cohort %>/<%= group.cohort_id %>">Groups for <%= cohort %></a>
+  <% select_groups_by_cohort.each do |cohort| %>
+    <br><a href="/groups/<%= cohort.name %>/<%= cohort.id %>">Groups for <%= cohort.name %></a>
   <% end %>
 <% end %>
