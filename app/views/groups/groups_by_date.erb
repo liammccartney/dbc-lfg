@@ -1,0 +1,11 @@
+<ul>
+  <% i = 1 %>
+  <% @groups.each do |group| %>
+    <li>Group <%= i %> </li>
+    <ol>
+    <% group.students do |student| %>
+      <li>student.name</li>
+    <% end %>
+    <% i += 1 %>
+  <% end %>
+</ul>
