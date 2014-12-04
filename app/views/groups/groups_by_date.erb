@@ -4,7 +4,7 @@
     <div class="group-list">
       <h4><a href="/groups/<%= group.id %>">Group <%= i %></a> - <a class="edit-link" href="/groups/<%= group.id %>/edit">Edit</a></h4>
       <ol>
-        <div id="student-list">
+        <div class="student-list">
          <%= erb :'groups/single', locals: {group: group} %>
         </ol>
       </div>

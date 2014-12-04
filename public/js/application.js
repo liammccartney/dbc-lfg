@@ -71,7 +71,7 @@ $(document).ready(function(){
       data: $target.serialize()
     }).done(function(response){
       $target.removeAttr('href');
-      $target.first('.student-list').replaceWith(response)
+      $('.student-list').first().replaceWith(response)
     });
   })
 
@@ -85,7 +85,8 @@ $(document).ready(function(){
       method: 'GET',
       data: $target.serialize()
     }).done(function(response){
-      $target.replaceWith(response)
+      $target.hide();
+      $('.edit-form').first().replaceWith(response)
     });
   })
 
