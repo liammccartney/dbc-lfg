@@ -1,6 +1,12 @@
 get '/students/delete' do
   @group = Group.find(params[:group_id])
-  erb :'students/remove_students'
+
+  if request.xhr?
+    erb :'students/remove_students', layout: false
+  else
+    erb :'students/remove_students'
+  end
+
 end
 
 delete '/students/delete' do

@@ -1,10 +1,14 @@
 <ul>
   <% i = 1 %>
   <% @groups_by_date.each do |group| %>
-    <li><a href="/groups/<%= group.id %>">Group <%= i %></a> - <a href="/groups/<%= group.id %>/edit">Edit</a></li>
-    <ol>
-     <%= erb :'groups/single', locals: {group: group} %>
-    </ol>
+    <div class="group-list">
+      <h4><a href="/groups/<%= group.id %>">Group <%= i %></a> - <a class="edit-link" href="/groups/<%= group.id %>/edit">Edit</a></h4>
+      <ol>
+        <div id="student-list">
+         <%= erb :'groups/single', locals: {group: group} %>
+        </ol>
+      </div>
     <% i += 1 %>
   <% end %>
+  </div>
 </ul>

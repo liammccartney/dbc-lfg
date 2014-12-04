@@ -1,6 +1,10 @@
 get '/groups/:group_id/edit' do |group_id|
   group = Group.find(group_id)
-  erb :'groups/edit', locals: {group: group}
+  if request.xhr?
+    erb :'groups/edit', layout: false, locals: {group: group}
+  else
+    erb :'groups/edit', locals: {group: group}
+  end
 end
 
 put '/groups/:group_id/edit' do |group_id|
