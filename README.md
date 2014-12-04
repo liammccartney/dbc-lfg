@@ -1,4 +1,4 @@
 dbc-lfg
 =======
 
-A web app for generating groups from DBC Cohorts
+A web app for generating groups from DBC Cohorts.
