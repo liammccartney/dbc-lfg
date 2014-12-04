@@ -32,7 +32,7 @@ class Grouping
   end
 
   def remove_extra_students
-    self.extra_students = self.students.pop(students.length % group_size)
+    self.extra_students = self.students.pop(students.length % group_size.to_i)
   end
 
   def distribute_extra_students
