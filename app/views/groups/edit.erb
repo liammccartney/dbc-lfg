@@ -1,3 +1,13 @@
 <%= erb :'/buttons/_delete_button', locals: {group: group} %>
+<%= erb :'/buttons/_remove_students_button', locals: {group: group} %>
+<form action="/groups/<%= group.id %>/edit" method="POST">
+  <input type="hidden" name="_method" value="put">
+  <br>
+  <% group.students.each do |student| %>
+    <input type='text' name='students[<%= student.id %>]' value="<%= student.name%>">
+    <br>
 
-<%= erb :'/groups/single', locals: {group: group} %>
+    <br>
+  <% end %>
+  <input type="submit" value="Update This Group">
+</form>

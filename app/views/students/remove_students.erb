@@ -1,0 +1,6 @@
+<% @group.students.each do |student| %>
+  <li>
+    <%= student.name %>
+    <%= erb :'/buttons/_delete_student_button', locals: {group_id: @group.id, student_id: student.id} %>
+  </li>
+<% end %>
